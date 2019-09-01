@@ -14,11 +14,11 @@ def post_detail(request, pk):
 def post_new(request):
     form = PostForm()
     if request.method == "POST":
-        form =PostForm(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
-            post =form.save(commit=False)
+            post = form.save(commit=False)
             post.author = request.user
-            post.pubished_date = timezone.now()
+            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
